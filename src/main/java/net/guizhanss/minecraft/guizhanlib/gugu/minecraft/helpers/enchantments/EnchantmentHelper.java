@@ -11,7 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import javax.annotation.Nonnull;
 
 /**
- * {@link Enchantment} 中文名称获取
+ * {@link Enchantment} Chinese name lookup
  *
  * @author ybw0014
  */

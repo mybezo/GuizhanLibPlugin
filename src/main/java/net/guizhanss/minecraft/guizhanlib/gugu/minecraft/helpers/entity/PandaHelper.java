@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * {@link Panda} 相关
+ * {@link Panda} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

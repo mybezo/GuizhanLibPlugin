@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.Locale;
 
 /**
- * {@link DyeColor} 中文名称获取
+ * {@link DyeColor} Chinese name lookup
  *
  * @author ybw0014
  */

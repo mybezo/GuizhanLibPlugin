@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 /**
- * Minecraft 本地化资源管理
+ * Minecraft localization resource manager
  */
 @SuppressWarnings("ConstantConditions")
 public final class MinecraftLocalization {
@@ -24,7 +24,7 @@ public final class MinecraftLocalization {
     }
 
     /**
-     * 加载 Minecraft 本地化资源。应仅在 GuizhanLibPlugin 启用时调用。
+     * Loads the Minecraft localization resources. Should only be called when GuizhanLibPlugin is enabled.
      */
     public static void load() {
         if (instance != null) {
@@ -35,10 +35,10 @@ public final class MinecraftLocalization {
     }
 
     /**
-     * 获取本地化文件中指定键名的内容
+     * Gets the value of the given key from the localization file
      *
-     * @param key {@link String} 键名
-     * @return 内容，如果不存在则返回 null
+     * @param key {@link String} the key
+     * @return the value, or null if it does not exist
      */
     @Nullable
     public static String getOrNull(@Nonnull String key) {
@@ -49,11 +49,11 @@ public final class MinecraftLocalization {
     }
 
     /**
-     * 获取本地化文件中指定键名的内容
+     * Gets the value of the given key from the localization file
      *
-     * @param key        {@link String} 键名
-     * @param defaultVal 默认值
-     * @return 内容，如果不存在则返回默认值
+     * @param key        {@link String} the key
+     * @param defaultVal the default value
+     * @return the value, or the default value if it does not exist
      */
     @Nonnull
     public static String getOrDefault(@Nonnull String key, @Nonnull String defaultVal) {
@@ -64,10 +64,10 @@ public final class MinecraftLocalization {
     }
 
     /**
-     * 获取本地化文件中指定键名的内容
+     * Gets the value of the given key from the localization file
      *
-     * @param key {@link String} 键名
-     * @return 内容，如果不存在则返回键名
+     * @param key {@link String} the key
+     * @return the value, or the key itself if it does not exist
      */
     @Nonnull
     public static String getOrKey(@Nonnull String key) {

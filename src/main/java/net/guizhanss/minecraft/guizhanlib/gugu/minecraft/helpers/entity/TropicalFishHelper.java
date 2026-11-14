@@ -10,7 +10,7 @@ import org.bukkit.entity.TropicalFish.Pattern;
 import javax.annotation.Nonnull;
 
 /**
- * {@link TropicalFish} 相关
+ * {@link TropicalFish} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

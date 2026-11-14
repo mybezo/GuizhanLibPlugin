@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * {@link Axolotl} 相关
+ * {@link Axolotl} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

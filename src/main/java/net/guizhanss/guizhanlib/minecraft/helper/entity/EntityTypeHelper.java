@@ -6,7 +6,7 @@ import org.bukkit.entity.EntityType;
 import javax.annotation.Nonnull;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.minecraft.guizhanlib.gugu.minecraft.helpers.entity.EntityTypeHelper} 代替
+ * @deprecated Use {@link net.guizhanss.minecraft.guizhanlib.gugu.minecraft.helpers.entity.EntityTypeHelper} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

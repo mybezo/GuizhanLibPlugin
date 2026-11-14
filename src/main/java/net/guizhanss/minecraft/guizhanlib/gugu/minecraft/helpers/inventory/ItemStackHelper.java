@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import javax.annotation.Nonnull;
 
 /**
- * {@link ItemStack} 中文名称获取
+ * {@link ItemStack} Chinese name lookup
  *
  * @author ybw0014
  */

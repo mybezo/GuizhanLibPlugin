@@ -3,7 +3,7 @@ package net.guizhanss.guizhanlib.minecraft;
 import lombok.experimental.UtilityClass;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.minecraft.guizhanlib.gugu.minecraft.ChatColors} 代替
+ * @deprecated Use {@link net.guizhanss.minecraft.guizhanlib.gugu.minecraft.ChatColors} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 import javax.annotation.Nonnull;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.minecraft.guizhanlib.gugu.java.BooleanHelper} 代替
+ * @deprecated Use {@link net.guizhanss.minecraft.guizhanlib.gugu.java.BooleanHelper} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

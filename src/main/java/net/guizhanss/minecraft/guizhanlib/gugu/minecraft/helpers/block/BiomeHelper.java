@@ -9,7 +9,7 @@ import org.bukkit.block.Biome;
 import javax.annotation.Nonnull;
 
 /**
- * {@link Biome} 中文名称获取
+ * {@link Biome} Chinese name lookup
  *
  * @author ybw0014
  */

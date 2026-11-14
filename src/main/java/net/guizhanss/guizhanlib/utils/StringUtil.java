@@ -6,7 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.guizhanlib.common.utils.StringUtil} 代替
+ * @deprecated Use {@link net.guizhanss.guizhanlib.common.utils.StringUtil} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

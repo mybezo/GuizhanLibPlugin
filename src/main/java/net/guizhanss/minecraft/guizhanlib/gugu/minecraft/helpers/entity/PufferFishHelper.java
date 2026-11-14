@@ -1,12 +1,12 @@
 package net.guizhanss.minecraft.guizhanlib.gugu.minecraft.helpers.entity;
 
 import lombok.experimental.UtilityClass;
-import org.bukkit.entity.Panda;
+import org.bukkit.entity.PufferFish;
 
 import javax.annotation.Nonnull;
 
 /**
- * {@link Panda} 相关
+ * {@link PufferFish} helper
  */
 @UtilityClass
 @SuppressWarnings({"unused"})

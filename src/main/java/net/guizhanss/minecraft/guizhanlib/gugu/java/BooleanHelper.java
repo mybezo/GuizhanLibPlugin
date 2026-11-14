@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 import javax.annotation.Nonnull;
 
 /**
- * 布尔值({@link Boolean})助手
+ * {@link Boolean} helper
  *
  * @author ybw0014
  */
@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
 public final class BooleanHelper {
 
     /**
-     * 根据提供的布尔值返回"是"或"否"
+     * Returns "是" (yes) or "否" (no) based on the given boolean value
      *
-     * @param value 一个布尔值
-     * @return 根据提供的布尔值返回 {@link String} "是"或"否"
+     * @param value a boolean value
+     * @return {@link String} "是" (yes) or "否" (no)
      */
     @Nonnull
     public static String yesOrNo(boolean value) {
@@ -24,10 +24,10 @@ public final class BooleanHelper {
     }
 
     /**
-     * 根据提供的布尔值返回"已启用"或"已禁用"
+     * Returns "已启用" (enabled) or "已禁用" (disabled) based on the given boolean value
      *
-     * @param value 一个布尔值
-     * @return 根据提供的布尔值返回 {@link String} "已启用"或"已禁用"
+     * @param value a boolean value
+     * @return {@link String} "已启用" (enabled) or "已禁用" (disabled)
      */
     @Nonnull
     public static String enabledOrDisabled(boolean value) {

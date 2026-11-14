@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * {@link Horse} 相关
+ * {@link Horse} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * {@link Fox} 相关
+ * {@link Fox} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

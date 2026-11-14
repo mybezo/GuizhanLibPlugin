@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 import java.io.BufferedReader;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.guizhanlib.common.utils.JsonUtil} 代替
+ * @deprecated Use {@link net.guizhanss.guizhanlib.common.utils.JsonUtil} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

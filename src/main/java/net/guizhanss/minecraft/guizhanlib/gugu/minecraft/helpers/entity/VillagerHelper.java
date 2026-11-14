@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * {@link Villager} 相关
+ * {@link Villager} helper
  */
 @UtilityClass
 @SuppressWarnings({"ConstantConditions", "unused"})

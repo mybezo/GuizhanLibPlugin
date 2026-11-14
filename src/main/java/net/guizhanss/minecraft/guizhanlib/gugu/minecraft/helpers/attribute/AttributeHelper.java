@@ -9,7 +9,7 @@ import org.bukkit.attribute.Attribute;
 import javax.annotation.Nonnull;
 
 /**
- * {@link Attribute} 中文名称获取
+ * {@link Attribute} Chinese name lookup
  *
  * @author ybw0014
  */

@@ -7,7 +7,7 @@ import org.bukkit.entity.Entity;
 import javax.annotation.Nonnull;
 
 /**
- * {@link Entity} 中文名称获取
+ * {@link Entity} Chinese name lookup
  *
  * @author ybw0014
  */

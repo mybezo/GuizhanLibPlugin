@@ -12,7 +12,7 @@ import java.util.function.BiPredicate;
 import java.util.jar.JarEntry;
 
 /**
- * @deprecated 请使用 {@link net.guizhanss.guizhanlib.common.utils.FileUtil} 代替
+ * @deprecated Use {@link net.guizhanss.guizhanlib.common.utils.FileUtil} instead
  */
 @Deprecated(since = "2.0.0", forRemoval = true)
 @UtilityClass

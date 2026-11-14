@@ -11,7 +11,7 @@ import org.bukkit.potion.PotionEffectType;
 import javax.annotation.Nonnull;
 
 /**
- * {@link PotionEffectType} 中文名称获取
+ * {@link PotionEffectType} Chinese name lookup
  *
  * @author ybw0014
  */
