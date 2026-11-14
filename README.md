@@ -1,55 +1,121 @@
-# GuizhanLibPlugin 鬼斩前置库插件
+# GuizhanLibPlugin
 
-将 GuizhanLib 库整合到插件中，并提供自动更新站点选择功能。
-
-## 下载
-
-从构建站下载: [点击前往](https://builds.guizhanss.com/ybw0014/GuizhanLibPlugin/master)
-
-![构建状态](https://builds.guizhanss.com/api/badge/ybw0014/GuizhanLibPlugin/master/latest)
-
-## 如何使用
-
-### 对于服主
-
-将下载好的 jar 放入`plugins`目录，然后重启服务器即可。
-
-### 对于开发者
-
-将 GuizhanLibPlugin 添加为依赖项:
-
+[![Build Status](https://builds.guizhanss.com/api/badge/ybw0014/GuizhanLibPlugin/master/latest)](https://builds.guizhanss.com/ybw0014/GuizhanLibPlugin/master)
 [![Maven Central](https://img.shields.io/maven-central/v/net.guizhanss/GuizhanLibPlugin.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.guizhanss%22%20AND%20a:%22GuizhanLibPlugin%22)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 
-```xml
-    <dependency>
-        <groupId>net.guizhanss</groupId>
-        <artifactId>GuizhanLibPlugin</artifactId>
-        <version>将此处替换为版本号</version>
-        <scope>provided</scope>
-    </dependency>
+A library plugin for [Slimefun](https://github.com/Slimefun/Slimefun4) addon development.
+
+GuizhanLibPlugin bundles the [GuizhanLib](https://github.com/ybw0014/GuizhanLib) library into a single server plugin, so multiple addons can share one copy of the library instead of shading it individually. It also provides an auto-updater with a selectable update site.
+
+## Features
+
+- **Shared library** – ships GuizhanLib so addons can depend on it at runtime.
+- **Auto update** – keeps GuizhanLibPlugin (and addons that use its updater) up to date.
+- **Selectable update site** – choose between the global site and a mainland China mirror.
+- **Localization helpers** – Minecraft translations for materials, entities, enchantments, biomes, potion effects and more.
+
+## Requirements
+
+| Requirement | Version |
+|-------------|---------|
+| Java        | 17+     |
+| Server      | Spigot / Paper 1.18+ |
+| Slimefun    | Required |
+
+## Download
+
+Download the latest build from the build site: [**builds.guizhanss.com**](https://builds.guizhanss.com/ybw0014/GuizhanLibPlugin/master)
+
+## Usage
+
+### For server owners
+
+1. Download the jar from the link above.
+2. Put it into your server's `plugins` folder.
+3. Restart the server.
+
+### Configuration
+
+After the first start, `plugins/GuizhanLibPlugin/config.yml` is generated:
+
+```yaml
+# Whether to enable the auto update module
+auto-update: true
+
+updater:
+  # The website used for auto update
+  #   global - (default) deployed on Cloudflare Pages: https://builds.guizhanss.com/
+  #   cn     - mirror hosted in mainland China (Tencent Cloud): https://builds.guizhanss.cn/
+  location: global
+
+  # Updater message language: en_US, zh_CN
+  lang: en_US
+
+# Whether to print debug messages in the console
+debug: false
 ```
 
-并在 `plugin.yml` 中添加 `GuizhanLibPlugin` 为前置：
+### For developers
+
+Add GuizhanLibPlugin as a `provided` / `compileOnly` dependency. Replace `VERSION` with the latest version shown in the Maven Central badge above.
+
+**Maven**
+
+```xml
+<dependency>
+    <groupId>net.guizhanss</groupId>
+    <artifactId>GuizhanLibPlugin</artifactId>
+    <version>VERSION</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+**Gradle (Kotlin DSL)**
+
+```kotlin
+dependencies {
+    compileOnly("net.guizhanss:GuizhanLibPlugin:VERSION")
+}
+```
+
+#### Declaring the dependency in `plugin.yml`
+
+As a hard dependency:
 
 ```yaml
 depend:
   - GuizhanLibPlugin
 ```
 
-你也可以添加 `GuizhanLibPlugin` 为软前置：
+Or as a soft dependency:
 
 ```yaml
 softdepend:
   - GuizhanLibPlugin
 ```
 
-并在插件的 `onEnable` 方法添加以下代码片段（尽量添加在前面）：
+If you use a soft dependency, check that the plugin is enabled at the start of your `onEnable` method:
 
 ```java
 if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
-    getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
-    getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
+    getLogger().log(Level.SEVERE, "This plugin requires GuizhanLibPlugin to run!");
+    getLogger().log(Level.SEVERE, "Download it here: https://50l.cc/gzlib");
     getServer().getPluginManager().disablePlugin(this);
     return;
 }
 ```
+
+## Building from source
+
+```bash
+git clone https://github.com/ybw0014/GuizhanLibPlugin.git
+cd GuizhanLibPlugin
+./gradlew shadowJar
+```
+
+The built jar is in `build/libs/`. To start a local test server with Slimefun preinstalled, run `./gradlew runServer`.
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
