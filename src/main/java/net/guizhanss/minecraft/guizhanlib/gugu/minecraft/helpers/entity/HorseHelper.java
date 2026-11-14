@@ -32,7 +32,7 @@ public final class HorseHelper {
         Style.NONE, "None",
         Style.WHITE, "White",
         Style.WHITE_DOTS, "White Dots",
-        Style.WHITEFIELD, "White Stripes"
+        Style.WHITEFIELD, "White Field"
     );
 
     @Nonnull

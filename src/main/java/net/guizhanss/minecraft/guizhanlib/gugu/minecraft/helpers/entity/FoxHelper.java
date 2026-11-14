@@ -17,8 +17,8 @@ import java.util.Map;
 public final class FoxHelper {
 
     private static final Map<Type, String> TYPE_MAP = Map.of(
-        Type.RED, "Red Fox",
-        Type.SNOW, "Snow Fox"
+        Type.RED, "Red",
+        Type.SNOW, "Snow"
     );
 
     @Nonnull

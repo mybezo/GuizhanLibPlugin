@@ -15,9 +15,9 @@ public final class PufferFishHelper {
     @Nonnull
     public static String getPuffState(int level) {
         return switch (level) {
-            case 0 -> "Not Inflated";
-            case 1 -> "Half Inflated";
-            case 2 -> "Fully Inflated";
+            case 0 -> "Deflated";
+            case 1 -> "Half Puffed";
+            case 2 -> "Fully Puffed";
             default -> "Unknown";
         };
     }

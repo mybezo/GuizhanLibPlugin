@@ -22,7 +22,7 @@ public enum ChatColors {
     /**
      * Aqua
      */
-    AQUA(ChatColor.AQUA, "Light Blue"),
+    AQUA(ChatColor.AQUA, "Aqua"),
     /**
      * Black
      */
@@ -38,7 +38,7 @@ public enum ChatColors {
     /**
      * Dark Aqua
      */
-    DARK_AQUA(ChatColor.DARK_AQUA, "Dark Cyan"),
+    DARK_AQUA(ChatColor.DARK_AQUA, "Dark Aqua"),
     /**
      * Dark Blue
      */
@@ -54,7 +54,7 @@ public enum ChatColors {
     /**
      * Dark Purple
      */
-    DARK_PURPLE(ChatColor.DARK_PURPLE, "Purple"),
+    DARK_PURPLE(ChatColor.DARK_PURPLE, "Dark Purple"),
     /**
      * Dark Red
      */
@@ -78,11 +78,11 @@ public enum ChatColors {
     /**
      * Light Purple
      */
-    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "Pink"),
+    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "Light Purple"),
     /**
-     * Magic
+     * Magic (obfuscated)
      */
-    MAGIC(ChatColor.MAGIC, "Random"),
+    MAGIC(ChatColor.MAGIC, "Obfuscated"),
     /**
      * Red
      */

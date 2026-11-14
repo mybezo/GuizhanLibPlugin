@@ -17,7 +17,7 @@ import java.util.Map;
 public final class AxolotlHelper {
 
     private static final Map<Variant, String> VARIANT_MAP = Map.of(
-        Variant.LUCY, "Pink",
+        Variant.LUCY, "Leucistic",
         Variant.WILD, "Brown",
         Variant.GOLD, "Gold",
         Variant.CYAN, "Cyan",

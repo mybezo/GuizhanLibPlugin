@@ -17,9 +17,9 @@ import java.util.Map;
 public final class FrogHelper {
 
     private static final Map<Variant, String> VARIANT_MAP = Map.of(
-        Variant.TEMPERATE, "Orange",
-        Variant.COLD, "Green",
-        Variant.WARM, "White"
+        Variant.TEMPERATE, "Temperate",
+        Variant.COLD, "Cold",
+        Variant.WARM, "Warm"
     );
 
     @Nonnull
