@@ -37,7 +37,7 @@ public class ItemStackHelperTest {
     void testGetName() {
         var name = MaterialHelper.getName(Material.DIRT);
         GuizhanLib.log(Level.INFO, "Name of ItemStack dirt: " + name);
-        Assertions.assertEquals("泥土", name);
+        Assertions.assertEquals("Dirt", name);
     }
 
     @Test
@@ -45,12 +45,12 @@ public class ItemStackHelperTest {
         // normal item
         var item = new ItemStack(Material.DIRT);
         var meta = item.getItemMeta();
-        meta.setDisplayName("泥土X");
+        meta.setDisplayName("Dirt X");
         item.setItemMeta(meta);
 
         var displayName = ItemStackHelper.getDisplayName(item);
         GuizhanLib.log(Level.INFO, "Display name of ItemStack dirt: " + displayName);
-        Assertions.assertEquals("泥土X", displayName);
+        Assertions.assertEquals("Dirt X", displayName);
 
         // player head
     }

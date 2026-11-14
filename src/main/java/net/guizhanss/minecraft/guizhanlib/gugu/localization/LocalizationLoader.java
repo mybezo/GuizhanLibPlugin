@@ -32,6 +32,7 @@ import java.util.logging.Logger;
  */
 public final class LocalizationLoader {
 
+    private static final String LANGUAGE = "en_us";
     private static final Gson GSON = new Gson();
     private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(5))
@@ -55,7 +56,7 @@ public final class LocalizationLoader {
             }
         }
 
-        localeFile = new File(GuizhanLib.getInstance().getDataFolder(), "minecraft-lang/" + fullVersion + ".json");
+        localeFile = new File(GuizhanLib.getInstance().getDataFolder(), "minecraft-lang/" + fullVersion + "_" + LANGUAGE + ".json");
 
         prepareFile();
         loadFile();
@@ -66,100 +67,77 @@ public final class LocalizationLoader {
     }
 
     private void prepareFile() {
-        logger.log(Level.INFO, () -> "Loading Minecraft localization file");
+        logger.log(Level.INFO, () -> "Loading Minecraft localization file (" + LANGUAGE + ")");
         logger.log(Level.INFO, () -> "Current version: " + fullVersion);
 
-        final String remoteUrl = "https://cdn.jsdelivr.net/gh/InventivetalentDev/minecraft-assets@" + fullVersion + "/assets/minecraft/lang/zh_cn.json";
+        if (localeFile.exists()) {
+            return;
+        }
+
+        // 1. The server jar ships the English language file of the running version.
+        if (prepareFromServerJar()) {
+            return;
+        }
+
+        // 2. Download it from the minecraft-assets mirror.
+        final String remoteUrl = "https://cdn.jsdelivr.net/gh/InventivetalentDev/minecraft-assets@" + fullVersion + "/assets/minecraft/lang/" + LANGUAGE + ".json";
 
         try {
-            if (!localeFile.exists()) {
-                logger.log(Level.INFO, () -> "Localization file for the current version does not exist, downloading (times out after 15 seconds)");
+            logger.log(Level.INFO, () -> "Localization file for the current version does not exist, downloading (times out after 15 seconds)");
 
-                HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(remoteUrl))
-                    .GET()
-                    .timeout(Duration.ofSeconds(15))
-                    .build();
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(remoteUrl))
+                .GET()
+                .timeout(Duration.ofSeconds(15))
+                .build();
 
-                HttpResponse<InputStream> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofInputStream());
+            HttpResponse<InputStream> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofInputStream());
 
-                int status = response.statusCode();
-                if (status >= 200 && status < 300) {
-                    try (InputStream inputStream = response.body()) {
-                        saveToFile(inputStream);
-                    }
-
-                    logger.log(Level.INFO, () -> "Downloaded the localization file for the current version");
-                } else {
-                    throw new RuntimeException("HTTP status " + status);
+            int status = response.statusCode();
+            if (status >= 200 && status < 300) {
+                try (InputStream inputStream = response.body()) {
+                    saveToFile(inputStream);
                 }
+
+                logger.log(Level.INFO, () -> "Downloaded the localization file for the current version");
+            } else {
+                throw new IOException("HTTP status " + status);
             }
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
-            logger.log(Level.SEVERE, "Thread was interrupted while downloading, trying the backup localization file", ie);
-            prepareBackupFile();
+            logger.log(Level.SEVERE, "Thread was interrupted while downloading the localization file", ie);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "An error occurred while loading Minecraft localization resources, trying the fallback", e);
+            logger.log(Level.SEVERE, "An error occurred while downloading Minecraft localization resources", e);
             logger.log(Level.INFO, () -> "You can download the localization file manually and place it at the location below, so the plugin can use it on the next load.");
             logger.log(Level.INFO, () -> "Download URL: " + remoteUrl);
             logger.log(Level.INFO, () -> "Place it at: " + localeFile.getAbsolutePath());
-            prepareBackupFile();
         }
     }
 
-    private void prepareBackupFile() {
-        logger.log(Level.INFO, "Loading the bundled backup Minecraft localization file (may not be the latest for the current version)");
-        try {
-            final String[] versionParts = fullVersion.split("\\.");
-            int majorVersion = Integer.parseInt(versionParts[0]);
-            int minorVersion = versionParts.length > 1 ? Integer.parseInt(versionParts[1]) : 0;
+    private boolean prepareFromServerJar() {
+        final String path = "assets/minecraft/lang/" + LANGUAGE + ".json";
+        ClassLoader[] loaders = {
+            Bukkit.getServer().getClass().getClassLoader(),
+            Thread.currentThread().getContextClassLoader(),
+            GuizhanLib.class.getClassLoader()
+        };
 
-            InputStream input;
-            String loadedVersion = null;
-
-            // Year-based versions (26.x+)
-            if (majorVersion >= 26) {
-                int yearVersion = majorVersion;
-                while (yearVersion >= 26) {
-                    String versionToTry = yearVersion + ".1";
-                    final String filename = "/minecraft-lang/" + versionToTry + "/zh_cn.json";
-                    input = GuizhanLib.getInstance().getClass().getResourceAsStream(filename);
-                    if (input != null) {
-                        saveToFile(input);
-                        loadedVersion = versionToTry;
-                        break;
-                    }
-                    yearVersion--;
-                }
-
-                if (loadedVersion == null) {
-                    minorVersion = 21;
-                }
+        for (ClassLoader loader : loaders) {
+            if (loader == null) {
+                continue;
             }
-
-            // Legacy versions (1.x)
-            if (loadedVersion == null) {
-                int mcVersion = (majorVersion == 1) ? minorVersion : 21;
-                while (mcVersion >= 18) {
-                    final String filename = "/minecraft-lang/1." + mcVersion + "/zh_cn.json";
-                    input = GuizhanLib.getInstance().getClass().getResourceAsStream(filename);
-                    if (input != null) {
-                        saveToFile(input);
-                        loadedVersion = "1." + mcVersion;
-                        break;
-                    }
-                    mcVersion--;
+            try {
+                InputStream input = loader.getResourceAsStream(path);
+                if (input != null) {
+                    saveToFile(input);
+                    logger.log(Level.INFO, "Loaded the localization file from the server jar");
+                    return true;
                 }
+            } catch (IOException e) {
+                logger.log(Level.WARNING, "Failed to read the localization file from the server jar", e);
             }
-
-            if (loadedVersion != null) {
-                logger.log(Level.INFO, "Loaded backup localization file: " + loadedVersion);
-            } else {
-                logger.log(Level.WARNING, "No usable backup localization file found");
-            }
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Failed to load the bundled backup Minecraft localization resources", e);
         }
+        return false;
     }
 
     private void saveToFile(InputStream inputStream) throws IOException {
@@ -184,6 +162,11 @@ public final class LocalizationLoader {
     }
 
     private void loadFile() {
+        if (!localeFile.exists()) {
+            logger.log(Level.WARNING, "No Minecraft localization file available, translation keys will be used as names");
+            return;
+        }
+
         try (FileInputStream stream = new FileInputStream(localeFile);
              BufferedReader reader = new BufferedReader(new InputStreamReader(
                  stream, StandardCharsets.UTF_8

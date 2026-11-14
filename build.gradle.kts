@@ -137,7 +137,7 @@ bukkit {
     main = "$mainPackage.GuizhanLib"
     apiVersion = "1.18"
     authors = listOf("ybw0014")
-    description = "A library plugin for Simplified Chinese Slimefun addons."
+    description = "A library plugin for Slimefun addons."
     website = "https://github.com/ybw0014/GuizhanLibPlugin"
     depend = listOf("Slimefun")
 }

@@ -10,7 +10,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * Chat colors ({@link ChatColor}) with their Chinese names
+ * Chat colors ({@link ChatColor}) with their display names
  *
  * @author ybw0014
  * @see ChatColor
@@ -22,91 +22,91 @@ public enum ChatColors {
     /**
      * Aqua
      */
-    AQUA(ChatColor.AQUA, "天蓝色"),
+    AQUA(ChatColor.AQUA, "Aqua"),
     /**
      * Black
      */
-    BLACK(ChatColor.BLACK, "黑色"),
+    BLACK(ChatColor.BLACK, "Black"),
     /**
      * Blue
      */
-    BLUE(ChatColor.BLUE, "蓝色"),
+    BLUE(ChatColor.BLUE, "Blue"),
     /**
      * Bold
      */
-    BOLD(ChatColor.BOLD, "加粗"),
+    BOLD(ChatColor.BOLD, "Bold"),
     /**
      * Dark Aqua
      */
-    DARK_AQUA(ChatColor.DARK_AQUA, "湖蓝色"),
+    DARK_AQUA(ChatColor.DARK_AQUA, "Dark Aqua"),
     /**
      * Dark Blue
      */
-    DARK_BLUE(ChatColor.DARK_BLUE, "深蓝色"),
+    DARK_BLUE(ChatColor.DARK_BLUE, "Dark Blue"),
     /**
      * Dark Gray
      */
-    DARK_GRAY(ChatColor.DARK_GRAY, "深灰色"),
+    DARK_GRAY(ChatColor.DARK_GRAY, "Dark Gray"),
     /**
      * Dark Green
      */
-    DARK_GREEN(ChatColor.DARK_GREEN, "深绿色"),
+    DARK_GREEN(ChatColor.DARK_GREEN, "Dark Green"),
     /**
      * Dark Purple
      */
-    DARK_PURPLE(ChatColor.DARK_PURPLE, "紫色"),
+    DARK_PURPLE(ChatColor.DARK_PURPLE, "Dark Purple"),
     /**
      * Dark Red
      */
-    DARK_RED(ChatColor.DARK_RED, "深红色"),
+    DARK_RED(ChatColor.DARK_RED, "Dark Red"),
     /**
      * Gold
      */
-    GOLD(ChatColor.GOLD, "金色"),
+    GOLD(ChatColor.GOLD, "Gold"),
     /**
      * Gray
      */
-    GRAY(ChatColor.GRAY, "灰色"),
+    GRAY(ChatColor.GRAY, "Gray"),
     /**
      * Green
      */
-    GREEN(ChatColor.GREEN, "绿色"),
+    GREEN(ChatColor.GREEN, "Green"),
     /**
      * Italic
      */
-    ITALIC(ChatColor.ITALIC, "斜体"),
+    ITALIC(ChatColor.ITALIC, "Italic"),
     /**
      * Light Purple
      */
-    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "粉红色"),
+    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "Light Purple"),
     /**
-     * Magic
+     * Magic (obfuscated)
      */
-    MAGIC(ChatColor.MAGIC, "随机"),
+    MAGIC(ChatColor.MAGIC, "Obfuscated"),
     /**
      * Red
      */
-    RED(ChatColor.RED, "红色"),
+    RED(ChatColor.RED, "Red"),
     /**
      * Reset
      */
-    RESET(ChatColor.RESET, "重置"),
+    RESET(ChatColor.RESET, "Reset"),
     /**
      * Strikethrough
      */
-    STRIKETHROUGH(ChatColor.STRIKETHROUGH, "删除线"),
+    STRIKETHROUGH(ChatColor.STRIKETHROUGH, "Strikethrough"),
     /**
      * Underline
      */
-    UNDERLINE(ChatColor.UNDERLINE, "下划线"),
+    UNDERLINE(ChatColor.UNDERLINE, "Underline"),
     /**
      * White
      */
-    WHITE(ChatColor.WHITE, "白色"),
+    WHITE(ChatColor.WHITE, "White"),
     /**
      * Yellow
      */
-    YELLOW(ChatColor.YELLOW, "黄色");
+    YELLOW(ChatColor.YELLOW, "Yellow");
 
     /**
      * Color code prefix
@@ -123,7 +123,7 @@ public enum ChatColors {
     }
 
     private final ChatColor color;
-    private final String chinese;
+    private final String displayName;
 
     /**
      * Returns the enum constant matching the given chat color
@@ -139,21 +139,32 @@ public enum ChatColors {
     }
 
     /**
-     * Gets the Chinese name
+     * Gets the display name
      *
-     * @return the Chinese name
+     * @return the display name
+     * @deprecated Use {@link #getDisplayName()} instead
      */
-    @Override
-    public String toString() {
-        return this.getChinese();
+    @Deprecated
+    public String getChinese() {
+        return this.getDisplayName();
     }
 
     /**
-     * Gets the Chinese color name prefixed with its color code
+     * Gets the display name
+     *
+     * @return the display name
+     */
+    @Override
+    public String toString() {
+        return this.getDisplayName();
+    }
+
+    /**
+     * Gets the display name prefixed with its color code
      *
      * @return the colored color name
      */
     public String toColoredString() {
-        return this.getColor() + this.getChinese();
+        return this.getColor() + this.getDisplayName();
     }
 }

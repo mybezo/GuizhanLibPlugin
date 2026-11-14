@@ -13,24 +13,24 @@ import javax.annotation.Nonnull;
 public final class BooleanHelper {
 
     /**
-     * Returns "是" (yes) or "否" (no) based on the given boolean value
+     * Returns "Yes" or "No" based on the given boolean value
      *
      * @param value a boolean value
-     * @return {@link String} "是" (yes) or "否" (no)
+     * @return {@link String} "Yes" or "No"
      */
     @Nonnull
     public static String yesOrNo(boolean value) {
-        return value ? "是" : "否";
+        return value ? "Yes" : "No";
     }
 
     /**
-     * Returns "已启用" (enabled) or "已禁用" (disabled) based on the given boolean value
+     * Returns "Enabled" or "Disabled" based on the given boolean value
      *
      * @param value a boolean value
-     * @return {@link String} "已启用" (enabled) or "已禁用" (disabled)
+     * @return {@link String} "Enabled" or "Disabled"
      */
     @Nonnull
     public static String enabledOrDisabled(boolean value) {
-        return value ? "已启用" : "已禁用";
+        return value ? "Enabled" : "Disabled";
     }
 }

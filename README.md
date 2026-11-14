@@ -13,7 +13,7 @@ GuizhanLibPlugin bundles the [GuizhanLib](https://github.com/ybw0014/GuizhanLib)
 - **Shared library** – ships GuizhanLib so addons can depend on it at runtime.
 - **Auto update** – keeps GuizhanLibPlugin (and addons that use its updater) up to date.
 - **Selectable update site** – choose between the global site and a mainland China mirror.
-- **Localization helpers** – Minecraft translations for materials, entities, enchantments, biomes, potion effects and more.
+- **Localization helpers** – English display names for materials, entities, enchantments, biomes, potion effects, mob variants and more, read from the server's own `en_us.json` (downloaded automatically as a fallback).
 
 ## Requirements
 

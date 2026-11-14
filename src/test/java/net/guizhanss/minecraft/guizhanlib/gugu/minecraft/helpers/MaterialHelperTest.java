@@ -34,6 +34,6 @@ public class MaterialHelperTest {
     void testGetName() {
         var name = MaterialHelper.getName(Material.DIRT);
         GuizhanLib.log(Level.INFO, "Name of Material dirt: " + name);
-        Assertions.assertEquals("泥土", name);
+        Assertions.assertEquals("Dirt", name);
     }
 }

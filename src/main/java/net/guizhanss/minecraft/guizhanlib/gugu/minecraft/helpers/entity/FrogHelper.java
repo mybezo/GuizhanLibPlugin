@@ -17,15 +17,15 @@ import java.util.Map;
 public final class FrogHelper {
 
     private static final Map<Variant, String> VARIANT_MAP = Map.of(
-        Variant.TEMPERATE, "橙色",
-        Variant.COLD, "绿色",
-        Variant.WARM, "白色"
+        Variant.TEMPERATE, "Orange",
+        Variant.COLD, "Green",
+        Variant.WARM, "White"
     );
 
     @Nonnull
     public static String getVariantName(@Nonnull Variant variant) {
         Preconditions.checkNotNull(variant);
-        return VARIANT_MAP.getOrDefault(variant, "未知");
+        return VARIANT_MAP.getOrDefault(variant, "Unknown");
     }
 
     @Nonnull

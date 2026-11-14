@@ -15,10 +15,10 @@ public final class PufferFishHelper {
     @Nonnull
     public static String getPuffState(int level) {
         return switch (level) {
-            case 0 -> "未膨胀";
-            case 1 -> "半膨胀";
-            case 2 -> "完全膨胀";
-            default -> "未知";
+            case 0 -> "Not Puffed";
+            case 1 -> "Half Puffed";
+            case 2 -> "Fully Puffed";
+            default -> "Unknown";
         };
     }
 }
