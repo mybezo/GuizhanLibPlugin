@@ -18,10 +18,10 @@ public final class RabbitHelper {
 
     private static final Map<Type, String> TYPE_MAP = Map.of(
         Type.BLACK, "Black",
-        Type.BLACK_AND_WHITE, "Black & White",
+        Type.BLACK_AND_WHITE, "Black and White",
         Type.BROWN, "Brown",
         Type.GOLD, "Gold",
-        Type.SALT_AND_PEPPER, "Salt & Pepper",
+        Type.SALT_AND_PEPPER, "Salt and Pepper",
         Type.THE_KILLER_BUNNY, "The Killer Bunny",
         Type.WHITE, "White"
     );

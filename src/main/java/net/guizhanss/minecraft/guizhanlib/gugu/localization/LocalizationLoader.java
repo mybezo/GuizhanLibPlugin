@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 public final class LocalizationLoader {
 
     private static final String LANGUAGE = "en_us";
+    private static final String BUNDLED_FILE = "/minecraft-lang/" + LANGUAGE + ".json";
     private static final Gson GSON = new Gson();
     private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(5))
@@ -162,23 +163,41 @@ public final class LocalizationLoader {
     }
 
     private void loadFile() {
-        if (!localeFile.exists()) {
-            logger.log(Level.WARNING, "No Minecraft localization file available, translation keys will be used as names");
-            return;
+        if (localeFile.exists()) {
+            try (InputStream stream = new FileInputStream(localeFile)) {
+                load(stream);
+                logger.log(Level.INFO, "Loaded successfully");
+                return;
+            } catch (Exception ex) {
+                logger.log(Level.SEVERE, "An error occurred while loading the Minecraft localization file", ex);
+            }
         }
 
-        try (FileInputStream stream = new FileInputStream(localeFile);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                 stream, StandardCharsets.UTF_8
-             ))) {
+        // 3. Fall back to the English language file bundled in the plugin jar
+        //    (may not be the latest for the current version). It is not cached,
+        //    so the server jar and the download are tried again on the next start.
+        logger.log(Level.INFO, "Loading the bundled backup Minecraft localization file (may not be the latest for the current version)");
+        try (InputStream stream = GuizhanLib.class.getResourceAsStream(BUNDLED_FILE)) {
+            if (stream == null) {
+                logger.log(Level.WARNING, "No usable backup localization file found, translation keys will be used as names");
+                return;
+            }
+            load(stream);
+            logger.log(Level.INFO, "Loaded the bundled backup localization file");
+        } catch (Exception ex) {
+            logger.log(Level.SEVERE, "Failed to load the bundled backup Minecraft localization file", ex);
+        }
+    }
+
+    private void load(InputStream stream) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             // @formatter:off
             Type type = new TypeToken<Map<String, String>>() {}.getType();
             // @formatter:on
-            lang.putAll(GSON.fromJson(reader, type));
-
-            logger.log(Level.INFO, "Loaded successfully");
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, "An error occurred while loading the Minecraft localization file", ex);
+            Map<String, String> result = GSON.fromJson(reader, type);
+            if (result != null) {
+                lang.putAll(result);
+            }
         }
     }
 }

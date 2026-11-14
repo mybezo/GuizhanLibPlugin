@@ -17,17 +17,17 @@ import java.util.Map;
 public final class CatHelper {
 
     private static final Map<Type, String> TYPE_MAP = Map.ofEntries(
-        Map.entry(Type.ALL_BLACK, "All Black"),
-        Map.entry(Type.BLACK, "Tuxedo"),
+        Map.entry(Type.ALL_BLACK, "Black Cat"),
+        Map.entry(Type.BLACK, "Tuxedo Cat"),
         Map.entry(Type.BRITISH_SHORTHAIR, "British Shorthair"),
-        Map.entry(Type.CALICO, "Calico"),
+        Map.entry(Type.CALICO, "Calico Cat"),
         Map.entry(Type.JELLIE, "Jellie"),
-        Map.entry(Type.PERSIAN, "Persian"),
-        Map.entry(Type.RAGDOLL, "Ragdoll"),
-        Map.entry(Type.RED, "Red Tabby"),
-        Map.entry(Type.SIAMESE, "Siamese"),
-        Map.entry(Type.TABBY, "Tabby"),
-        Map.entry(Type.WHITE, "White")
+        Map.entry(Type.PERSIAN, "Persian Cat"),
+        Map.entry(Type.RAGDOLL, "Ragdoll Cat"),
+        Map.entry(Type.RED, "Red Tabby Cat"),
+        Map.entry(Type.SIAMESE, "Siamese Cat"),
+        Map.entry(Type.TABBY, "Tabby Cat"),
+        Map.entry(Type.WHITE, "White Cat")
     );
 
     @Nonnull

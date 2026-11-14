@@ -22,7 +22,7 @@ public final class VillagerHelper {
         Type.PLAINS, "Plains",
         Type.DESERT, "Desert",
         Type.JUNGLE, "Jungle",
-        Type.SAVANNA, "Savanna",
+        Type.SAVANNA, "Savannah",
         Type.SNOW, "Snow",
         Type.SWAMP, "Swamp",
         Type.TAIGA, "Taiga"

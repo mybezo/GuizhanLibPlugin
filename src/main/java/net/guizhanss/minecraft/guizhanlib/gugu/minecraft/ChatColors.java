@@ -10,7 +10,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * Chat colors ({@link ChatColor}) with their display names
+ * Chat colors ({@link ChatColor}) with their English names
  *
  * @author ybw0014
  * @see ChatColor
@@ -22,7 +22,7 @@ public enum ChatColors {
     /**
      * Aqua
      */
-    AQUA(ChatColor.AQUA, "Aqua"),
+    AQUA(ChatColor.AQUA, "Light Blue"),
     /**
      * Black
      */
@@ -38,7 +38,7 @@ public enum ChatColors {
     /**
      * Dark Aqua
      */
-    DARK_AQUA(ChatColor.DARK_AQUA, "Dark Aqua"),
+    DARK_AQUA(ChatColor.DARK_AQUA, "Dark Cyan"),
     /**
      * Dark Blue
      */
@@ -54,7 +54,7 @@ public enum ChatColors {
     /**
      * Dark Purple
      */
-    DARK_PURPLE(ChatColor.DARK_PURPLE, "Dark Purple"),
+    DARK_PURPLE(ChatColor.DARK_PURPLE, "Purple"),
     /**
      * Dark Red
      */
@@ -78,11 +78,11 @@ public enum ChatColors {
     /**
      * Light Purple
      */
-    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "Light Purple"),
+    LIGHT_PURPLE(ChatColor.LIGHT_PURPLE, "Pink"),
     /**
-     * Magic (obfuscated)
+     * Magic
      */
-    MAGIC(ChatColor.MAGIC, "Obfuscated"),
+    MAGIC(ChatColor.MAGIC, "Random"),
     /**
      * Red
      */
@@ -123,7 +123,7 @@ public enum ChatColors {
     }
 
     private final ChatColor color;
-    private final String displayName;
+    private final String englishName;
 
     /**
      * Returns the enum constant matching the given chat color
@@ -139,32 +139,32 @@ public enum ChatColors {
     }
 
     /**
-     * Gets the display name
+     * Gets the English name
      *
-     * @return the display name
-     * @deprecated Use {@link #getDisplayName()} instead
+     * @return the English name
+     * @deprecated Use {@link #getEnglishName()} instead
      */
     @Deprecated
     public String getChinese() {
-        return this.getDisplayName();
+        return this.getEnglishName();
     }
 
     /**
-     * Gets the display name
+     * Gets the English name
      *
-     * @return the display name
+     * @return the English name
      */
     @Override
     public String toString() {
-        return this.getDisplayName();
+        return this.getEnglishName();
     }
 
     /**
-     * Gets the display name prefixed with its color code
+     * Gets the English name prefixed with its color code
      *
      * @return the colored color name
      */
     public String toColoredString() {
-        return this.getColor() + this.getDisplayName();
+        return this.getColor() + this.getEnglishName();
     }
 }
